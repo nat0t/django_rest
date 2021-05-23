@@ -8,6 +8,9 @@ class Project(models.Model):
     repo_link = models.URLField(blank=True)
     users = models.ManyToManyField(User)
 
+    def __str__(self):
+        return self.name
+
 
 class TODO(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
