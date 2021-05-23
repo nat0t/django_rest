@@ -1,6 +1,6 @@
 from django.db import models
 
-from todo_service.users.models import User
+from users.models import User
 
 
 class Project(models.Model):
