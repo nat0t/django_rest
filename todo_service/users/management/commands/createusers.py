@@ -9,9 +9,9 @@ class Command(BaseCommand):
         users_number = 3
         self.stdout.write('Started creating users...')
         try:
-            User.objects.create_user(username='testsu',
+            User.objects.create_superuser(username='testsu',
                                      email='su@example.local',
-                                     password='testsupass', is_superuser=True)
+                                     password='testsupass')
         except Exception as error:
             raise CommandError(error)
         else:
