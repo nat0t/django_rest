@@ -15,4 +15,5 @@ class TODOFilter(filters.FilterSet):
         model = TODO
         fields = {
             'project': ['exact', ],
+            'created_at': ['lt', 'gt', ],
         }
