@@ -4,15 +4,9 @@ import React from 'react'
 const TodoItem = ({todo}) => {
     return (
         <tr>
-            <td>
-                {todo.text}
-            </td>
-            <td>
-                {todo.createdAt}
-            </td>
-            <td>
-                {todo.updatedAt}
-            </td>
+            <td>{todo.text}</td>
+            <td>{todo.createdAt}</td>
+            <td>{todo.updatedAt}</td>
         </tr>
     )
 }
@@ -23,15 +17,9 @@ const TodoList = ({todos}) => {
         <table className="table table-sm">
             <thead>
                 <tr>
-                    <th>
-                        Текст
-                    </th>
-                    <th>
-                        Дата создания
-                    </th>
-                    <th>
-                        Дата изменения
-                    </th>
+                    <th> Текст</th>
+                    <th>Дата создания</th>
+                    <th>Дата изменения</th>
                 </tr>
             </thead>
             <tbody>

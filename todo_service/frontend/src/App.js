@@ -7,6 +7,7 @@ import Footer from "./components/Footer.js";
 import UserList from "./components/User.js";
 import ProjectList from "./components/Projects.js";
 import TodoList from "./components/Todos.js";
+import ProjectTodoList from "./components/Project.js";
 
 const NotFound404 = ({location}) => {
         return (
@@ -65,6 +66,7 @@ class App extends React.Component {
                         <Route exact path='/users' component={() => <UserList users={this.state.users}/>}/>
                         <Route exact path='/projects' component={() => <ProjectList projects={this.state.projects}/>}/>
                         <Route exact path='/todo' component={() => <TodoList todos={this.state.todos}/>}/>
+                        <Route path="/projects/:id"><ProjectTodoList items={this.state.todos} /></Route>
                         <Redirect from='/' to='/projects' />
                         <Route component={NotFound404} />
                     </Switch>
