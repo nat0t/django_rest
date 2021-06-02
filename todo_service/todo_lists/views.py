@@ -1,4 +1,3 @@
-from rest_framework.exceptions import NotFound
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
@@ -29,19 +28,6 @@ class TODOModelViewSet(ModelViewSet):
     serializer_class = TODOModelSerializer
     pagination_class = TODOLimitOffsetPagination
     filterset_class = TODOFilter
-
-    def list(self, request, *args, **kwargs):
-        todos = TODO.objects.filter(is_active=True)
-        serializer = TODOModelSerializer(todos, many=True,
-                                         context={'request': request})
-        return Response(serializer.data)
-
-    def retrieve(self, request, pk=None, *args, **kwargs):
-        todo = get_object_or_404(TODO, pk=pk)
-        serializer = TODOModelSerializer(todo, context={'request': request})
-        if todo.is_active == False:
-            raise NotFound(detail='Error 404, page not found', code=404)
-        return Response(serializer.data)
 
     def destroy(self, request, pk=None, *args, **kwargs):
         todo = get_object_or_404(TODO, pk=pk)
