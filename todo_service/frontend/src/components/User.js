@@ -4,15 +4,9 @@ import React from 'react'
 const UserItem = ({user}) => {
     return (
         <tr>
-            <td>
-                {user.first_name}
-            </td>
-            <td>
-                {user.last_name}
-            </td>
-            <td>
-                {user.email}
-            </td>
+            <td>{user.first_name}</td>
+            <td>{user.last_name}</td>
+            <td>{user.email}</td>
         </tr>
     )
 }
@@ -20,18 +14,12 @@ const UserItem = ({user}) => {
 
 const UserList = ({users}) => {
     return (
-        <table class="table table-sm">
+        <table className="table table-sm">
             <thead>
                 <tr>
-                    <th>
-                        First name
-                    </th>
-                    <th>
-                        Last Name
-                    </th>
-                    <th>
-                        E-mail
-                    </th>
+                    <th>First name</th>
+                    <th>Last Name</th>
+                    <th>E-mail</th>
                 </tr>
             </thead>
             <tbody>
