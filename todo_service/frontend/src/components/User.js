@@ -17,9 +17,9 @@ const UserList = ({users}) => {
         <table className="table table-sm">
             <thead>
                 <tr>
-                    <th>First name</th>
-                    <th>Last Name</th>
-                    <th>E-mail</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Адрес электронной почты</th>
                 </tr>
             </thead>
             <tbody>
