@@ -30,13 +30,13 @@ class TestProjectViewSet(TestCase):
 class TestTodoViewSet(APITestCase):
     def test_get_list(self):
         response = self.client.get('/api/todo_lists/')
-        self.client.login(username='django', password='A1234567a')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_edit_todo(self):
-        User.objects.create_superuser(username='testuser',
-                                      email='testuser@example.local',
-                                      password='Q1234567q')
+        admin = User.objects.create_superuser('testuser',
+                                              'testuser@example.local',
+                                              'Q1234567q')
+        print(admin.username, admin.password)
         todo = mixer.blend(TODO)
         self.client.login(username='testuser', password='Q1234567q')
         response = self.client.put(f'/api/todo_lists/{todo.id}/',
@@ -45,5 +45,4 @@ class TestTodoViewSet(APITestCase):
                                        'project': todo.project,
                                        'created_by': todo.created_by
                                    })
-        print(response)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
