@@ -10,7 +10,9 @@ const ProjectItem = ({project, deleteProject}) => {
             </td>
             <td>{project.repoLink}</td>
             <td>
-                <button onClick={() => deleteProject(project.id)} type='button'>Delete</button>
+                <button onClick={() => deleteProject(project.id)}
+                        type='button'>Delete
+                </button>
             </td>
         </tr>
     )
@@ -19,17 +21,20 @@ const ProjectItem = ({project, deleteProject}) => {
 
 const ProjectList = ({projects, deleteProject}) => {
     return (
-        <table className="table table-sm">
-            <thead>
+        <div>
+            <table className="table table-sm">
+                <thead>
                 <tr>
                     <th>Название проекта</th>
                     <th>Ссылка на репозиторий</th>
                 </tr>
-            </thead>
-            <tbody>
-                {projects.map((project) => <ProjectItem project={project} deleteProject={deleteProject} key={project.id} />)}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {projects.map((project) => <ProjectItem project={project} deleteProject={deleteProject} key={project.id}/>)}
+                </tbody>
+            </table>
+            <Link to='/projects/create'>Create</Link>
+        </div>
     )
 }
 
