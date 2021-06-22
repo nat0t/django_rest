@@ -125,7 +125,6 @@ class App extends React.Component {
             .then(response => {
                 this.setState({projects: this.state.projects.filter((item) => item.id !== id)})
             }).catch(error => console.log(error))
-
     }
 
     createProject(name, repoLink, user) {
@@ -146,6 +145,14 @@ class App extends React.Component {
             }).catch(error => console.log(error))
     }
 
+    deleteTodo(id) {
+        const headers = this.get_headers()
+        axios.delete(`http://127.0.0.1:8000/api/todo_lists/${id}`, {headers})
+            .then(response => {
+                this.setState({todos: this.state.todos.filter((item) => item.id !== id)})
+            }).catch(error => console.log(error))
+    }
+
     render() {
         return (
             <div className="App">
@@ -155,7 +162,7 @@ class App extends React.Component {
                         <Route exact path='/users' component={() => <UserList users={this.state.users}/>}/>
                         <Route exact path='/projects/create' component={() => <ProjectForm users={this.state.users} createProject={(name, repoLink, user) => this.createProject(name, repoLink, user)}/>}/>
                         <Route exact path='/projects' component={() => <ProjectList projects={this.state.projects} deleteProject={(id) => this.deleteProject(id)}/>}/>
-                        <Route exact path='/todo' component={() => <TodoList todos={this.state.todos}/>}/>
+                        <Route exact path='/todo' component={() => <TodoList todos={this.state.todos} deleteTodo={(id) => this.deleteTodo(id)}/>}/>
                         <Route exact path='/login' component={() => <LoginForm get_token={(username, password) => this.get_token(username, password)} />} />
                         <Route path="/projects/:id"><ProjectTodoList items={this.state.todos} /></Route>
                         <Redirect from='/' to='/projects' />
